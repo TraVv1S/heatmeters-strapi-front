@@ -1,0 +1,21 @@
+.wrapper {
+    margin: auto;
+    max-width: 900px;    
+}
+
+.navlink {
+    color: #aaa;
+    text-decoration: none;
+    margin: 10px;
+
+    &:hover {
+        color: #fff;
+    }
+
+    &_active {
+        text-decoration: none;
+        margin: 10px;
+        color: #fff;
+    }
+
+}

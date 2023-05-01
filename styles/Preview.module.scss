@@ -1,0 +1,14 @@
+.product {
+    display: flex;
+    width: 400px;
+    border-radius: 15px;
+
+    &:hover {
+        background-color: bisque;
+    }
+}
+
+.thumb {
+    width:150px;
+    object-fit: cover;
+}
