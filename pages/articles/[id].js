@@ -77,7 +77,7 @@ export default function Article({article}) {
     )
 };
 
-export async function getStaticProps({params}) {
+export async function getServerSideProps({params}) {
     const response = await fetch(`http://142.132.182.231:1337/api/articles/${params.id}?populate=*`)
     const json = await response.json();
     const article = json.data
@@ -86,18 +86,27 @@ export async function getStaticProps({params}) {
     }
 }
 
-export async function getStaticPaths() {
-    const response = await fetch(`http://142.132.182.231:1337/api/articles/`)
-    const json = await response.json();
-    const articles = json.data
-    const paths = articles.map(article => {
-            return {params: {
-                id: `${article.id}` 
-            }}
-        })
+// export async function getStaticProps({params}) {
+//     const response = await fetch(`http://142.132.182.231:1337/api/articles/${params.id}?populate=*`)
+//     const json = await response.json();
+//     const article = json.data
+//     return {
+//         props: {article},
+//     }
+// }
 
-    return {
-        paths,
-        fallback:true
-    };
-}
+// export async function getStaticPaths() {
+//     const response = await fetch(`http://142.132.182.231:1337/api/articles/`)
+//     const json = await response.json();
+//     const articles = json.data
+//     const paths = articles.map(article => {
+//             return {params: {
+//                 id: `${article.id}` 
+//             }}
+//         })
+
+//     return {
+//         paths,
+//         fallback:true
+//     };
+// }
