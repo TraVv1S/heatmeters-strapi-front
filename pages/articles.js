@@ -32,7 +32,7 @@ const Articles = ({articles}) => {
 
 export default Articles;
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const response = await fetch(`http://142.132.182.231:1337/api/articles?populate=*&sort=views%3Adesc`)
     const json = await response.json();
     const articles = json.data;
