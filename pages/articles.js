@@ -35,8 +35,7 @@ export default Articles;
 export const getStaticProps = async (context) => {
     const response = await fetch(`http://142.132.182.231:1337/api/articles?populate=*&sort=views%3Adesc`)
     const json = await response.json();
-    const articles = json.data
-    console.log(context)
+    const articles = json.data;
 
     return {
         props: {articles}, // will be passed to the page component as props

@@ -1,14 +1,27 @@
 .product {
     display: flex;
-    width: 400px;
-    border-radius: 15px;
+    gap: 1rem;
+    // width: 400px;
 
     &:hover {
-        background-color: bisque;
+        background-color: #f1f2fa;
     }
 }
 
 .thumb {
     width:150px;
     object-fit: cover;
+}
+
+.info {
+    padding: 10px;
+}
+
+.title {
+    display: block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 5.4em;
+    line-height: 1.8em;
 }
