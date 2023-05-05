@@ -7,7 +7,7 @@ const Preview = ({product}) => {
         <div className={classes.product}>
                             <img
                                 className={classes.thumb}
-                                src={"http://142.132.182.231:1337"+product.attributes.cover.data.attributes.formats.thumbnail.url}
+                                src={"https://vdmer.ru"+product.attributes.cover.data.attributes.formats.thumbnail.url}
                             />
                             <div className={classes.info}>
                                 <h3 className={classes.title}>
