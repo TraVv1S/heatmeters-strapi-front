@@ -23,7 +23,7 @@ export default function Article({article}) {
         redirect: 'follow'
         };
 
-        fetch(`http://142.132.182.231:1337/api/articles/${article.id}`, requestOptions)
+        fetch(`https://vdmer.ru/api/articles/${article.id}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -35,7 +35,7 @@ export default function Article({article}) {
                 <h1 className={styles.title}>{article.attributes.Title} </h1>
                 <p>Просмотров: {views}. ID:{article.id}</p>
                 <div className={styles.main}>
-                    <img className={styles.img} src={"http://142.132.182.231:1337"+article.attributes.cover.data.attributes.url} ></img>
+                    <img className={styles.img} src={"https://vdmer.ru"+article.attributes.cover.data.attributes.url} ></img>
                     <div className={styles.specs}>
                         <table>
                             <tr>
@@ -65,7 +65,7 @@ export default function Article({article}) {
                             <tr>
                                 <th>{doc.attributes.name}</th>
                                 <td>
-                                    <button><a href={`http://142.132.182.231:1337${doc.attributes.url}`} target="_blank">Скачать</a></button>
+                                    <button><a href={`https://vdmer.ru${doc.attributes.url}`} target="_blank">Скачать</a></button>
                                 </td>
                             </tr>
                             ))
@@ -78,7 +78,7 @@ export default function Article({article}) {
 };
 
 export async function getServerSideProps({params}) {
-    const response = await fetch(`http://142.132.182.231:1337/api/articles/${params.id}?populate=*`)
+    const response = await fetch(`https://vdmer.ru/api/articles/${params.id}?populate=*`)
     const json = await response.json();
     const article = json.data
     return {

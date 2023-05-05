@@ -43,7 +43,7 @@ export default Articles;
 export const getServerSideProps = async (context) => {
     const filter = context.query.search ? `&filters[Title][$contains]=${context.query.search}` : '';
     console.log(filter);
-    const response = await fetch(`http://142.132.182.231:1337/api/articles?populate=*${filter}&sort=views%3Adesc`)
+    const response = await fetch(`https://vdmer.ru/api/articles?populate=*${filter}&sort=views%3Adesc`)
     const json = await response.json();
     const articles = json.data;
 
