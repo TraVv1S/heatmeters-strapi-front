@@ -1,32 +1,21 @@
 import styles from '../../styles/article.module.scss'
 import MainContainer from "../../components/MainContainer";
 import { useEffect } from 'react';
+import { fetcher } from '../../api/fetcher';
 import Island from '../../components/UI/Island';
 
 export default function Article({article}) {
 
     let views = article.attributes.views;
     useEffect(async () => {
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        const raw = JSON.stringify({
-        "data": {
-            "views": ++views
-        }
-        });
-
-        const requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-
-        fetch(`http://142.132.182.231:1337/api/articles/${article.id}`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        const response = await fetcher.put(
+            `/api/articles/${article.id}`,
+            {
+                "data": {
+                    "views": ++views
+                }
+            });
+        console.log(response);
     }, [])
     return (
         <MainContainer keywords={article.name}>
@@ -35,7 +24,7 @@ export default function Article({article}) {
                 <h1 className={styles.title}>{article.attributes.Title} </h1>
                 <p>Просмотров: {views}. ID:{article.id}</p>
                 <div className={styles.main}>
-                    <img className={styles.img} src={"http://142.132.182.231:1337"+article.attributes.cover.data.attributes.url} ></img>
+                    <img className={styles.img} src={process.env.API_URL+article.attributes.cover.data.attributes.url} ></img>
                     <div className={styles.specs}>
                         <table>
                             <tr>
