@@ -43,7 +43,7 @@ export default Articles;
 
 export const getServerSideProps = async (context) => {
     const filter = context.query.search ? `&filters[Title][$contains]=${context.query.search}` : '';
-    const response = await fetcher(`/api/articles?populate=*${filter}&sort=views%3Adesc`)
+    const response = await fetcher(`/articles?populate=*${filter}&sort=views%3Adesc`)
     const articles = response.data.data;
 
     return {

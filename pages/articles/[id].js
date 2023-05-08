@@ -9,7 +9,7 @@ export default function Article({article}) {
     let views = article.attributes.views;
     useEffect(async () => {
         const response = await fetcher.put(
-            `/api/articles/${article.id}`,
+            `/articles/${article.id}`,
             {
                 "data": {
                     "views": ++views
@@ -24,21 +24,23 @@ export default function Article({article}) {
                 <h1 className={styles.title}>{article.attributes.Title} </h1>
                 <p>Просмотров: {views}. ID:{article.id}</p>
                 <div className={styles.main}>
-                    <img className={styles.img} src={process.env.API_URL+article.attributes.cover.data.attributes.url} ></img>
+                    <img className={styles.img} src={process.env.UPLOADS_URL+article.attributes.cover.data.attributes.url} ></img>
                     <div className={styles.specs}>
                         <table>
-                            <tr>
-                                <th>Номер в ГРСИ РФ:</th>
-                                <td>{article.attributes.main_specs.grsi_number}</td>
-                            </tr>
-                            <tr>
-                                <th>Производитель:</th>
-                                <td>{article.attributes.producer.data.attributes.title}</td>
-                            </tr>
-                            <tr>
-                                <th>Поставщик:</th>
-                                <td>{article.attributes.main_specs.postavschik}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <th>Номер в ГРСИ РФ:</th>
+                                    <td>{article.attributes.main_specs.grsi_number}</td>
+                                </tr>
+                                <tr>
+                                    <th>Производитель:</th>
+                                    <td>{article.attributes.producer.data.attributes.title}</td>
+                                </tr>
+                                <tr>
+                                    <th>Поставщик:</th>
+                                    <td>{article.attributes.main_specs.postavschik}</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -49,17 +51,19 @@ export default function Article({article}) {
             <Island>
                 <h2 >Файлы </h2>
                 <table>
-                    {article.attributes.docs.data
-                        ? article.attributes.docs.data.map(doc => (
-                            <tr>
-                                <th>{doc.attributes.name}</th>
-                                <td>
-                                    <button><a href={`http://142.132.182.231:1337${doc.attributes.url}`} target="_blank">Скачать</a></button>
-                                </td>
-                            </tr>
-                            ))
-                        : null
-                    }
+                    <tbody>
+                        {article.attributes.docs.data
+                            ? article.attributes.docs.data.map(doc => (
+                                <tr key={doc.id}>
+                                    <th>{doc.attributes.name}</th>
+                                    <td>
+                                        <button><a href={process.env.UPLOADS_URL+doc.attributes.url} target="_blank">Скачать</a></button>
+                                    </td>
+                                </tr>
+                                ))
+                            : null
+                        }
+                    </tbody>
                 </table>
             </Island>
         </MainContainer>
@@ -67,27 +71,24 @@ export default function Article({article}) {
 };
 
 export async function getServerSideProps({params}) {
-    const response = await fetch(`http://142.132.182.231:1337/api/articles/${params.id}?populate=*`)
-    const json = await response.json();
-    const article = json.data
+    const response = await fetcher(`/articles/${params.id}?populate=*`)
+    const article = response.data.data
     return {
         props: {article},
     }
 }
 
 // export async function getStaticProps({params}) {
-//     const response = await fetch(`http://142.132.182.231:1337/api/articles/${params.id}?populate=*`)
-//     const json = await response.json();
-//     const article = json.data
+//     const response = await fetcher(`/articles/${params.id}?populate=*`)
+//     const article = response.data.data
 //     return {
 //         props: {article},
 //     }
 // }
 
 // export async function getStaticPaths() {
-//     const response = await fetch(`http://142.132.182.231:1337/api/articles/`)
-//     const json = await response.json();
-//     const articles = json.data
+//     const response = await fetcher(`/articles/`)
+//     const article = response.data.data
 //     const paths = articles.map(article => {
 //             return {params: {
 //                 id: `${article.id}` 
