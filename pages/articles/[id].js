@@ -39,6 +39,10 @@ export default function Article({article}) {
                                     <th>mp:</th>
                                     <td>{article.attributes.mp}</td>
                                 </tr>
+                                <tr>
+                                    <th>Межповерочный интервал:</th>
+                                    <td>{article.attributes.validity_period}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
