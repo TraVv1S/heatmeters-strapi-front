@@ -21,7 +21,7 @@ export default function Article({article}) {
         <MainContainer keywords={article.name}>
             
             <Island>
-                <h1 className={classes.title}>{article.attributes.Title} </h1>
+                <h1 className={classes.title}>{article.attributes.title} </h1>
                 <div className={classes.main}>
                     <img className={classes.img} src={process.env.UPLOADS_URL+article.attributes.cover?.data?.attributes?.url} ></img>
                     <div className={classes.specs}>
@@ -29,15 +29,15 @@ export default function Article({article}) {
                             <tbody>
                                 <tr>
                                     <th>Номер в ГРСИ РФ:</th>
-                                    <td>{article.attributes.main_specs.grsi_number}</td>
+                                    <td>{article.attributes.ngr}</td>
                                 </tr>
                                 <tr>
                                     <th>Производитель:</th>
                                     <td>{article.attributes.producer.data.attributes.title}</td>
                                 </tr>
                                 <tr>
-                                    <th>Поставщик:</th>
-                                    <td>{article.attributes.main_specs.postavschik}</td>
+                                    <th>mp:</th>
+                                    <td>{article.attributes.mp}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -45,7 +45,7 @@ export default function Article({article}) {
                 </div>
 
                 <h2 >Сводка </h2>
-                <p>{article.attributes.Body}</p>
+                <p>{article.attributes.description}</p>
             </Island>
             <Island>
                 <h2 >Файлы </h2>
