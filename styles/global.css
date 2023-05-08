@@ -22,6 +22,11 @@ h2 {
     margin-bottom: 1rem;
 }
 
+a {
+    text-decoration: none;
+    color: #325faa;
+}
+
 table {
     line-height: 1.5rem;
     border-spacing: 0;

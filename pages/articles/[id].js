@@ -1,4 +1,4 @@
-import styles from '../../styles/article.module.scss'
+import classes from '../../styles/article.module.scss'
 import MainContainer from "../../components/MainContainer";
 import { useEffect } from 'react';
 import { fetcher } from '../../api/fetcher';
@@ -21,11 +21,10 @@ export default function Article({article}) {
         <MainContainer keywords={article.name}>
             
             <Island>
-                <h1 className={styles.title}>{article.attributes.Title} </h1>
-                <p>Просмотров: {views}. ID:{article.id}</p>
-                <div className={styles.main}>
-                    <img className={styles.img} src={process.env.UPLOADS_URL+article.attributes.cover.data.attributes.url} ></img>
-                    <div className={styles.specs}>
+                <h1 className={classes.title}>{article.attributes.Title} </h1>
+                <div className={classes.main}>
+                    <img className={classes.img} src={process.env.UPLOADS_URL+article.attributes.cover?.data?.attributes?.url} ></img>
+                    <div className={classes.specs}>
                         <table>
                             <tbody>
                                 <tr>
@@ -66,6 +65,9 @@ export default function Article({article}) {
                     </tbody>
                 </table>
             </Island>
+            <div className={classes.footer}>
+                    <p>Просмотров: {views}. ID:{article.id}</p>
+                </div>
         </MainContainer>
     )
 };
