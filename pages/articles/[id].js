@@ -23,7 +23,10 @@ export default function Article({article}) {
             <Island>
                 <h1 className={classes.title}>{article.attributes.title} </h1>
                 <div className={classes.main}>
-                    <img className={classes.img} src={process.env.UPLOADS_URL+article.attributes.cover?.data?.attributes?.url} ></img>
+                    <img
+                        className={classes.img}
+                        src={article.attributes.cover.data !== null ? process.env.UPLOADS_URL+article.attributes.cover.data.attributes.url : "/meter_placeholder.svg"}
+                    ></img>
                     <div className={classes.specs}>
                         <table>
                             <tbody>
