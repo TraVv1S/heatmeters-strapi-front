@@ -65,3 +65,12 @@ button {
     padding: 10px 15px;
     cursor: pointer;
 }
+
+button:disabled {
+    background-color: #f0f0f0;
+    color: #aaaaaa;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    cursor: not-allowed;
+}
