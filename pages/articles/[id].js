@@ -21,7 +21,9 @@ export default function Article({article}) {
         <MainContainer keywords={article.name}>
             
             <Island>
-                <h1 className={classes.title}>{article.attributes.title} </h1>
+                <h1 className={classes.title}>
+                    {article.attributes.title +" "+ article.attributes.types.data.map(type => type.attributes.title).join(' ')}
+                </h1>
                 <div className={classes.main}>
                     <img
                         className={classes.img}
@@ -46,13 +48,18 @@ export default function Article({article}) {
                                     <th>Межповерочный интервал:</th>
                                     <td>{article.attributes.validity_period}</td>
                                 </tr>
+                                <tr>
+                                    <th>Тип:</th>
+                                    <td>{article.attributes.types.data.map(type => type.attributes.title).join(', ')}</td>
+                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
                 </div>
 
                 <h2 >Сводка </h2>
-                <p>{article.attributes.description}</p>
+                <p>{article.attributes.title}</p>
             </Island>
             <Island>
                 <h2 >Файлы </h2>

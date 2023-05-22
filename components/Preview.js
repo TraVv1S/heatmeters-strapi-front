@@ -13,10 +13,11 @@ const Preview = ({product}) => {
                             />
                             <div className={classes.info}>
                                 <h3 className={classes.title}>
-                                    <A href={`/articles/${product.id}`} text={product.attributes.title} />
+                                    <A href={`/articles/${product.id}`} text={product.attributes.title +" "+ product.attributes.types?.data?.map(type => type.attributes.title).join(' ')} />
                                     
                                 </h3>
                                 <p>{product.attributes.ngr}</p>
+                                {/* <p>{product.attributes.types.data.attributes.title}</p> */}
                                 <p>views: {product.attributes.views}</p>
                             </div>
                         </div>
