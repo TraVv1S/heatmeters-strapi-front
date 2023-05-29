@@ -32,29 +32,32 @@ const Articles = ({articles, meta}) => {
                     </form>
                 </div>
             </Island>
-            <Island>
-                <h1 className={classes.title}>Счетчики:  {meta.pagination.total}</h1>
+            
+                
                 <div className={classes.articles}>
+                    <h1 className={classes.title}>Счетчики:  {meta.pagination.total}</h1>
                     {articles.map(article =>
                         <Preview key={article.id} product={article} />
                     )}
                 </div>
-                <div>
+                <div className={classes.pagination}>
+                    <div>
+                        <button
+                            onClick={() => handlePagination(meta.pagination.page - 1)}
+                            disabled={meta.pagination.page === 1}
+                        >
+                            Предыдущая
+                        </button>
+                        <button
+                            onClick={() => handlePagination(meta.pagination.page + 1)}
+                            disabled={meta.pagination.page === meta.pagination.pageCount}
+                        >
+                            Следующая
+                        </button>
+                    </div>
                     <p>Страница: {meta.pagination.page} из {meta.pagination.pageCount}</p>
-                    <button
-                        onClick={() => handlePagination(meta.pagination.page - 1)}
-                        disabled={meta.pagination.page === 1}
-                    >
-                        Предыдущая
-                    </button>
-                    <button
-                        onClick={() => handlePagination(meta.pagination.page + 1)}
-                        disabled={meta.pagination.page === meta.pagination.pageCount}
-                    >
-                        Следующая
-                    </button>
                 </div>
-            </Island>
+            
         </MainContainer>
     );
 };

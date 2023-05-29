@@ -1,22 +1,26 @@
 .product {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1rem;
-    // width: 400px;
-
-    &:hover {
-        background-color: #f1f2fa;
-    }
 }
 
 .thumb {
-    width:150px;
+    width:100px;
     height: 100px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .info {
-    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.type {
+    max-height: 1.1rem;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .title {
@@ -25,5 +29,34 @@
     word-wrap: break-word;
     overflow: hidden;
     max-height: 5.4em;
-    line-height: 1.8em;
+    // line-height: 1.8em;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.producer {
+    color: #929292;
+}
+
+@media (max-width: 640px) {
+    .product {
+        gap: 10px;
+    }
+
+    .info {
+        font-size: 11px;
+    }
+
+    .title {
+        font-size: 12px;
+        max-height: 5.4em;
+        // line-height: 1.8em;
+
+        a {
+            color: #000;
+        }
+    }
 }
