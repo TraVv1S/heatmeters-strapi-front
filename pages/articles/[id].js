@@ -61,6 +61,12 @@ export default function Article({article}) {
                                 {article.attributes.mp}
                             </p>
                         </div>
+
+                        <p className={classes.label}>Межповерочный интервал</p>
+                        <div className={classes.poverka}>
+                            <p className={classes.hot}>Горячая - {article.attributes.mpi_h}</p>
+                            <p className={classes.cold}>Холодная - {article.attributes.mpi_c}</p>
+                        </div>
                     </div>
                 </div>
             </Island>

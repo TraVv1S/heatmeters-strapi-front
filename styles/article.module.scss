@@ -36,6 +36,31 @@
   margin-left: 2rem;
 }
 
+.poverka {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  color: #fff;
+  width: 100%;
+  
+  p {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 10px;
+    width: 48%;
+  }
+
+  .hot {
+    background-color: #eb5a59;
+  }
+
+  .cold {
+    background-color: #51a9c3;
+  }
+}
+
 .footer {
   max-width: 900px;
   margin: 0 auto;
