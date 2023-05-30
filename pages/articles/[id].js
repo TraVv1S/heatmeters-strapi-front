@@ -21,49 +21,52 @@ export default function Article({article}) {
         <MainContainer keywords={article.name}>
             
             <Island>
-                <h1 className={classes.title}>
-                    {article.attributes.title +" "+ article.attributes.types.data.map(type => type.attributes.title).join(' ')}
-                </h1>
                 <div className={classes.main}>
                     <img
                         className={classes.img}
                         src={article.attributes.cover.data !== null ? process.env.UPLOADS_URL+article.attributes.cover.data.attributes.url : "/meter_placeholder.svg"}
                     ></img>
                     <div className={classes.specs}>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th>Номер в ГРСИ РФ:</th>
-                                    <td>{article.attributes.ngr}</td>
-                                </tr>
-                                <tr>
-                                    <th>Производитель:</th>
-                                    <td>{article.attributes.producer.data.attributes.title}</td>
-                                </tr>
-                                <tr>
-                                    <th>mp:</th>
-                                    <td>{article.attributes.mp}</td>
-                                </tr>
-                                <tr>
-                                    <th>Межповерочный интервал:</th>
-                                    <td>{article.attributes.validity_period}</td>
-                                </tr>
-                                <tr>
-                                    <th>Тип:</th>
-                                    <td>{article.attributes.types.data.map(type => type.attributes.title).join(', ')}</td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
+                        <div className={classes.field}>
+                            <p className={classes.label}>Регистрационный номер типа СИ</p>
+                            <p className={classes.value}>{article.attributes.ngr}</p>
+                        </div>
+                        <div className={classes.field}>
+                            <p className={classes.label}>Наименование</p>
+                            <h1 className={classes.value}>
+                                {article.attributes.title +" "+ article.attributes.types.data.map(type => type.attributes.title).join(' ')}
+                            </h1>
+                        </div>
+                        <div className={classes.field}>
+                            <p className={classes.label}>Тип</p>
+                            <p className={classes.value}>
+                                {article.attributes.types.data.map(type => type.attributes.title).join(', ')}
+                            </p>
+                        </div>
+                        <div className={classes.field}>
+                            <p className={classes.label}>Изготовитель</p>
+                            <p className={classes.value}>
+                                {article.attributes.producer.data.attributes.title}
+                            </p>
+                        </div>
+                        <div className={classes.field}>
+                            <p className={classes.label}>Период действия</p>
+                            <p className={classes.value}>
+                                {article.attributes.validity_period}
+                            </p>
+                        </div>
+                        <div className={classes.field}>
+                            <p className={classes.label}>Методика поверки</p>
+                            <p className={classes.value}>
+                                {article.attributes.mp}
+                            </p>
+                        </div>
                     </div>
                 </div>
-
-                <h2 >Сводка </h2>
-                <p>{article.attributes.title}</p>
             </Island>
             <Island>
-                <h2 >Файлы </h2>
-                <table>
+                <h2>Файлы</h2>
+                <table className={classes.files}>
                     <tbody>
                         {article.attributes.docs.data
                             ? article.attributes.docs.data.map(doc => (

@@ -1,11 +1,12 @@
 .product {
     display: flex;
     gap: 1rem;
+    cursor: pointer;
 }
 
 .thumb {
-    width:100px;
-    height: 100px;
+    width:120px;
+    height: 120px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -18,7 +19,7 @@
 }
 
 .type {
-    max-height: 1.1rem;
+    max-height: 1.3rem;
     overflow: hidden;
     word-wrap: break-word;
 }
@@ -46,8 +47,17 @@
         gap: 10px;
     }
 
+    .thumb {
+        width:100px;
+        height: 100px;
+    }
+
     .info {
         font-size: 11px;
+    }
+
+    .type {
+        max-height: 1rem;
     }
 
     .title {

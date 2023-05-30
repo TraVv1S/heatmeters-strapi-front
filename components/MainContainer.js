@@ -10,7 +10,7 @@ const MainContainer = ({children, keywords}) => {
                 <title>Главная страница</title>
             </Head>
             <Navigation />
-            <div>
+            <div style={{marginBottom:"2rem"}}>
                 {children}
             </div>
            

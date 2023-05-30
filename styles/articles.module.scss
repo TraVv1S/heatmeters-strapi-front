@@ -21,10 +21,16 @@
 .pagination {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   font-size: 10px;
   color: #929292;
+  min-height: 70px;
 
+  .buttons {
+    display: flex;
+    gap: 0.6rem;
+  }
 }
 
 @media (max-width: 640px) {
