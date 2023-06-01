@@ -49,7 +49,7 @@ const Articles = ({articles, meta}) => {
                         </button>
                         <button
                             onClick={() => handlePagination(meta.pagination.page + 1)}
-                            disabled={meta.pagination.page === meta.pagination.pageCount}
+                            disabled={meta.pagination.page >= meta.pagination.pageCount}
                         >
                             Следующая
                         </button>
@@ -65,7 +65,7 @@ export default Articles;
 
 export const getServerSideProps = async (context) => {
     const page = context.query.page ? context.query.page : 1;
-    const filter = context.query.search ? `&filters[Title][$contains]=${context.query.search}` : '';
+    const filter = context.query.search ? `&filters[title][$containsi]=${context.query.search}` : '';
     const response = await fetcher(`/articles?populate=*${filter}&sort=views%3Adesc&pagination[page]=${page}`)
     const articles = response.data.data;
     const meta = response.data.meta

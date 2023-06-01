@@ -40,13 +40,13 @@ export default function Article({article}) {
                         <div className={classes.field}>
                             <p className={classes.label}>Тип</p>
                             <p className={classes.value}>
-                                {article.attributes.types.data.map(type => type.attributes.title).join(', ')}
+                                {article.attributes.types.data?.map(type => type.attributes.title).join(', ')}
                             </p>
                         </div>
                         <div className={classes.field}>
                             <p className={classes.label}>Изготовитель</p>
                             <p className={classes.value}>
-                                {article.attributes.producer.data.attributes.title}
+                                {article.attributes.producer.data?.attributes?.title}
                             </p>
                         </div>
                         <div className={classes.field}>
@@ -79,7 +79,7 @@ export default function Article({article}) {
                                 <tr key={doc.id}>
                                     <th>{doc.attributes.name}</th>
                                     <td>
-                                        <button><a href={process.env.UPLOADS_URL+doc.attributes.url} target="_blank">Скачать</a></button>
+                                        <button><a href={process.env.UPLOADS_URL+doc.attributes?.url} target="_blank">Скачать</a></button>
                                     </td>
                                 </tr>
                                 ))
