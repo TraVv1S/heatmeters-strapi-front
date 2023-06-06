@@ -12,7 +12,7 @@ const Preview = ({product}) => {
                     <img
                         className={classes.thumb}
                         // src={process.env.UPLOADS_URL+product.attributes.cover?.data?.attributes?.formats?.thumbnail?.url}
-                        src={product.attributes.cover.data !== null ? process.env.UPLOADS_URL+product.attributes.cover.data.attributes.formats.thumbnail.url : "/meter_placeholder.svg"}
+                        src={product.attributes.cover.data !== null ? process.env.UPLOADS_URL+product.attributes.cover.data[0].attributes.formats.thumbnail.url : "/meter_placeholder.svg"}
                     />
                     <div className={classes.info}>
                         <p className={classes.type}>
