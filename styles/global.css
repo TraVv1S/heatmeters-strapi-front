@@ -51,11 +51,6 @@ input {
     width: 100%;
 }
 
-.navbar {
-    background: rgb(29, 29, 29);
-    padding: 15px;
-}
-
 button {
     background-color: #e4eefa;
     color: #325faa;

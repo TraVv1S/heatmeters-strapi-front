@@ -3,12 +3,14 @@ import MainContainer from "../../components/MainContainer";
 import { useEffect } from 'react';
 import { fetcher } from '../../api/fetcher';
 import Island from '../../components/UI/Island';
+import Link from 'next/link';
+import { BiArrowBack, BiMenu } from 'react-icons/bi';
 
 export default function Article({article}) {
 
     let views = article.attributes.views;
-    useEffect(async () => {
-        const response = await fetcher.put(
+    useEffect(() => {
+        const response = fetcher.put(
             `/articles/${article.id}`,
             {
                 "data": {
@@ -19,7 +21,13 @@ export default function Article({article}) {
     }, [])
     return (
         <MainContainer keywords={article.name}>
-            
+            <div className={classes.header}>
+                <div className={classes.nav}>
+                    <Link href="/"><BiArrowBack size={24}/></Link>
+                    <h1>{article.attributes.ngr}</h1>
+                    <div><BiMenu size={24}/></div>
+                </div>
+            </div>
             <Island>
                 <div className={classes.main}>
                     <img
@@ -33,9 +41,9 @@ export default function Article({article}) {
                         </div>
                         <div className={classes.field}>
                             <p className={classes.label}>Наименование</p>
-                            <h1 className={classes.value}>
+                            <p className={classes.value}>
                                 {article.attributes.title +" "+ article.attributes.types.data.map(type => type.attributes.title).join(' ')}
-                            </h1>
+                            </p>
                         </div>
                         <div className={classes.field}>
                             <p className={classes.label}>Тип</p>

@@ -3,8 +3,8 @@ import styles from '../styles/A.module.css'
 
 export default function A({text, href}) {
     return (
-        <Link href={href}>
-            <a title={text} className={styles.link}>{text}</a>
+        <Link href={href} title={text} className={styles.link}>
+            {text}
         </Link>
     )
 }

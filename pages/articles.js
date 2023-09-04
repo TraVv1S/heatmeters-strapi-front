@@ -25,7 +25,7 @@ const Articles = ({articles, meta}) => {
     return (
         <MainContainer keywords={"articles next js"}>
             <Island>
-            <div >
+                <div >
                     <form id="search" className={classes.search} onSubmit={handleSearch}>
                         <input value={search} onChange={e => setSearch(e.target.value)} type="search" name="searchbar" placeholder="Поиск" />
                         <button type="submit">Найти</button>

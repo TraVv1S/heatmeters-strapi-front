@@ -12,14 +12,15 @@ const Navigation = () => {
 
     return (
         
-        <div className="navbar">
-            <div className={classes.wrapper}>
+        <div className={classes.navbar}>
+            <Link className={classes.logo} href="/">VDMER.RU</Link>
+            {/* <div className={classes.wrapper}>
                 {navlinks.map(({href, text}, i) => {
-                    return (<Link key={i} href={href}>
-                                <a className={pathname === href ? classes.navlink_active : classes.navlink}>{text}</a>
+                    return (<Link key={i} href={href} className={pathname === href ? classes.navlink_active : classes.navlink}>
+                                {text}
                             </Link>
                 )})}
-            </div>
+            </div> */}
         </div>
     );
 };
